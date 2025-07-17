@@ -33,7 +33,9 @@ int main(){
                 printf("The stack is empty");
             }
             else{
-                printf("The top is at index %d\n", top);
+                int popped=stack[top];
+                top--;
+                    printf("%d\n", popped);
             }
         }
         else if(choice==4){
@@ -41,8 +43,9 @@ int main(){
                 printf("Nothing to print");
             }
             else{
-                for(int i=0; i<=top; i++){
-                    printf("%d\n", stack[i]);
+                printf("The elements of the stack are: \n");
+                for(int i=top; i<0; i++){
+                    printf("At index: %d --> %d", i, stack[i]);
                 }
             }
         }
