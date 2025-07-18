@@ -4,13 +4,14 @@ void mergesort(int arr[], int low, int high){
     int mid;
 
     if(low<high){
-        mid = (low + high)/2;
-        mergesort(arr, low, mid);
-        mergesort(arr, mid+1, high);
+        mid = (low + high)/2; //find the mid 
+        mergesort(arr, low, mid); //recursively sort the left half
+        mergesort(arr, mid+1, high); //recursively sort the right half
         
         int i = low, j = mid+1, k = 0;
-        int arr2[high - low+1];
+        int arr2[high - low+1]; //temporary array to hold merged values
         
+        //compare elements from both halves and store in arr2 in sorted order
         while(i <= mid && j <=high){
             if(arr[i] <= arr[j]){
                 arr2[k++] = arr[i++];
@@ -19,12 +20,18 @@ void mergesort(int arr[], int low, int high){
                 arr2[k++] = arr[j++];
             }
         }
+        
+        //copy any remaining elements from the left half
         while(i <= mid){
             arr2[k++] = arr[i++];
         }
+
+        //copy any remaining elements from the right half
         while(j <= high){
             arr2[k++] = arr[j++];
         }
+
+        //copy sorted values into the original array
         for(i = low, k = 0; i <= high; i++, k++){
             arr[i] = arr2[k];
         }
